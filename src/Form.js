@@ -1,21 +1,28 @@
-import React, { Component } from 'react'
+import React from 'react'
+import Container from './Container.js'
 
-function Form (props) {
+
+/*function KeyPress(event) {
+    console.log({
+      key: event.key
+    })
+}*/
+
+function Form ({handleSubmit, handleKeyPress}) {
     return (
-        <form>
+        <form onSubmit={handleSubmit}>
             <div>
                 <label>
                     Technologie : 
-                    <input type="text"/>
+                    <input type='text' onKeyPress={handleKeyPress}/>
                 </label>
-                <input type="submit" value="Valider" />
             </div>    
             <div>
                 <label>
                     Niveau de la Technologie :
                     <input type="text"/>
                 </label>
-                <input type="submit" value="Valider" />
+                <button> Valider </button>
             </div>    
         </form>
     )
