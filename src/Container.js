@@ -3,32 +3,41 @@ import Form from './Form'
 import Show from './Show'
 
 class Container extends React.Component {
-    state ={value : ''}
 
-        /*handleChange=(e) => {
-            this.setState({value:e.target.value});
-        }*/
-        handleSubmit=(event) => {
-            console.log(event.target)
-            this.setState({value:event.target.value})
-            console.log(event)
-            event.preventDefault()
-            
+    constructor(props){
+        super(props);
+        this.state={skills: []}
+    }
+        /*
+        handleChange=(event) => {
+            this.setState({value:event.target.value});
         }
-        handleKeyPress=(event)=> {
-            event.preventDefault()
-            console.log(event.keyCode)
-            
+       
+        
+        handleLevel=(value)=> {
+            this.setState(state => {
+            return {...state, level:value}
+                
+            })
+        }
+        */
+
+        saveData=(technovalue, levelvalue)=> {
+            this.setState(prevState => {
+                let arr = {...prevState,
+                    skills: [...prevState.skills, {techno: technovalue, level: levelvalue}]};
+                return arr;
+            })
         }
 
     render(){
         return(<div>
-            <Form handleKeyPress={this.handleKeyPress} 
-            handleSubmit={this.handleSubmit}/>
-            <Show value={this.state.value}/>
+            <Form saveData={this.saveData}/>
+            <Show skills={this.state.skills}/>
             </div>
         )
     }    
 }
+
 
 export default Container

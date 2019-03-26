@@ -1,9 +1,20 @@
 import React from 'react'
 
-function Show ({value}){
+function Show(props){
+    console.log(props.skills)
+
     return(
         <div>
-            {`La technologie est ${value}`}
+            {props.skills.map((skill, index)=>{
+                return(
+                    <div key= {index}>
+                    La technologie est {skill.techno}
+                    <br/>
+                    Le niveau est {skill.level}
+                    </div>
+                )
+            })}
+            
         </div>
     )
 }

@@ -3,6 +3,7 @@ import './App.css';
 import Header from './Header'
 import Subtitle from './Subtitle'
 import Container from './Container'
+import Form from './Form'
 
 class App extends Component {
   render() {
