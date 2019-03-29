@@ -1,14 +1,15 @@
-import React from 'react'
-import Form from './Form'
-import Show from './Show'
+import React from "react";
+import Form from "./Form";
+import Show from "./Show";
+
+let idStart = 0;
 
 class Container extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state={skills: []}
-    }
-        /*
+  constructor(props) {
+    super(props);
+    this.state = { skills: [] };
+  }
+  /*
         handleChange=(event) => {
             this.setState({value:event.target.value});
         }
@@ -22,22 +23,37 @@ class Container extends React.Component {
         }
         */
 
-        saveData=(technovalue, levelvalue)=> {
-            this.setState(prevState => {
-                let arr = {...prevState,
-                    skills: [...prevState.skills, {techno: technovalue, level: levelvalue}]};
-                return arr;
-            })
-        }
+  saveData = (technovalue, levelvalue, idIncr) => {
+    this.setState(prevState => {
+      idIncr = ++idStart;
+      let arr = {
+        ...prevState,
+        skills: [
+          ...prevState.skills,
+          { techno: technovalue, level: levelvalue, id: idIncr }
+        ]
+      };
+      return arr;
+    });
+  };
 
-    render(){
-        return(<div>
-            <Form saveData={this.saveData}/>
-            <Show skills={this.state.skills}/>
-            </div>
-        )
-    }    
+  handleSuppr = id => {
+    this.setState(prevState => {
+      return {
+        skills: prevState.skills.filter(element => element.id !== id)
+      };
+    });
+  };
+
+  render() {
+    console.log(this.state);
+    return (
+      <div>
+        <Form saveData={this.saveData} />
+        <Show skills={this.state.skills} handleSuppr={this.handleSuppr} />
+      </div>
+    );
+  }
 }
 
-
-export default Container
+export default Container;

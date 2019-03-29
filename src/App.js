@@ -1,17 +1,16 @@
-import React, { Component } from 'react'
-import './App.css';
-import Header from './Header'
-import Subtitle from './Subtitle'
-import Container from './Container'
-import Form from './Form'
+import React, { Component } from "react";
+import "./App.css";
+import Header from "./Header";
+import Container from "./Container";
+import Chuck from "./Chuck";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-         <Header/>
-         <Subtitle/>
-         <Container/>
+        <Chuck />
+        <Header />
+        <Container />
       </div>
     );
   }
